@@ -1,0 +1,19 @@
+# DedupFS Rust worker configuration example
+libraries_root = "/libraries"
+database_path = "/state/dedupfs.sqlite3"
+
+# Worker runtime
+concurrency = 4
+io_rate_limit_mib_per_sec = 256
+
+# Hash and batch behavior
+hash_algorithm = "blake3"
+scan_write_batch_size = 2000
+hash_fetch_batch_size = 512
+hash_read_chunk_bytes = 4194304
+
+# Lease and retry policy
+hash_claim_ttl_seconds = 600
+hash_retry_base_seconds = 30
+hash_retry_max_seconds = 3600
+job_lock_ttl_seconds = 300

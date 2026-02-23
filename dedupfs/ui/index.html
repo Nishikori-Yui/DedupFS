@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DedupFS Dashboard</title>
+    <link rel="stylesheet" href="/ui/static/styles.css" />
+  </head>
+  <body>
+    <div class="ambient"></div>
+    <header class="topbar panel reveal">
+      <div>
+        <p class="eyebrow">DedupFS Dashboard</p>
+        <h1>Duplicate Groups</h1>
+      </div>
+      <div class="topbar-meta">
+        <span id="group-count">Groups: 0</span>
+        <span id="file-count">Files: 0</span>
+      </div>
+    </header>
+
+    <main class="layout reveal-delay">
+      <section class="panel groups-panel">
+        <div class="panel-title-row">
+          <h2>Group Queue</h2>
+          <button id="refresh-groups" class="ghost-btn" type="button">Refresh</button>
+        </div>
+        <p class="panel-note">Keyset pagination + virtualized rendering</p>
+
+        <div id="groups-viewport" class="viewport">
+          <div id="groups-spacer" class="spacer"></div>
+          <div id="groups-layer" class="rows-layer"></div>
+        </div>
+
+        <button id="load-more-groups" class="primary-btn" type="button">Load more groups</button>
+      </section>
+
+      <section class="panel files-panel">
+        <div class="panel-title-row">
+          <h2 id="selected-group">Select a duplicate group</h2>
+          <button id="load-more-files" class="ghost-btn" type="button" disabled>Load more files</button>
+        </div>
+        <p class="panel-note" id="files-note">Thumbnail requests are on-demand and non-blocking.</p>
+
+        <div id="files-grid" class="files-grid"></div>
+      </section>
+    </main>
+
+    <template id="group-row-template">
+      <button class="group-row" type="button">
+        <span class="group-key"></span>
+        <span class="group-meta"></span>
+      </button>
+    </template>
+
+    <template id="file-card-template">
+      <article class="file-card">
+        <div class="thumb-shell">
+          <img class="thumb-image" alt="thumbnail" loading="lazy" />
+          <div class="thumb-fallback">Queued</div>
+        </div>
+        <div class="file-meta">
+          <p class="file-path"></p>
+          <p class="file-size"></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="/ui/static/app.js" type="module"></script>
+  </body>
+</html>

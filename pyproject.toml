@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dedupfs"
+version = "0.1.0"
+description = "Deterministic NAS-scale file deduplication backend"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "blake3>=0.4.1",
+  "fastapi>=0.115.8",
+  "uvicorn[standard]>=0.34.0",
+  "sqlalchemy>=2.0.38",
+  "pydantic-settings>=2.7.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.4",
+  "httpx>=0.28.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["dedupfs"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+markers = [
+  "integration: containerized or environment-dependent integration tests",
+]
