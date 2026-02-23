@@ -1,5 +1,11 @@
 # DedupFS
 
+[English](./README.md) | [简体中文](./README.zh-CN.md)
+
+> WARNING
+> This project has not been validated by real-world production testing.
+> Do not deploy to production environments.
+
 Deterministic NAS-scale deduplication system with Python control plane and Rust data plane.
 
 ![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)
